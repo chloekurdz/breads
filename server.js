@@ -1,9 +1,11 @@
 const express = require('express')
+const breads = require('./controllers/breads_controller.js')
 
 require('dotenv').config()
 const PORT = process.env.PORT
 const app = express()
 app.use(express.static('public'))
+app.use(express.urlencoded({extended: true}))
 
 app.get('/', (req, res) => {
     res.send('Welcome to an Awesome App about Breads!')
@@ -19,6 +21,7 @@ app.listen(PORT, () => {
 app.get('*', (req, res) => {
     res.send('404')
 })
+
 
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jsx')
