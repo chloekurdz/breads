@@ -9,7 +9,7 @@ breads.get('/:arrayIndex', (req,res) => {
         title: 'Index Page'
     })
 } else {
-     res.send('404')
+     res.render('404')
 }
 })
 
