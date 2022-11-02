@@ -12,7 +12,7 @@ const breadSchema = new Schema({
 })
 
 breadSchema.methods.getBakedBy = function() {
-  return `${this.name} was baked with love by ${this.baker}`
+  return `${this.name} was baked with love by ${this.baker}, who has been with us since ${this.baker.startDate.getFullYear()}`
 }
 
 
