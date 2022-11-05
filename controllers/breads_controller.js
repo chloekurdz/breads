@@ -14,16 +14,15 @@ breads.get('/new', (req, res) => {
     
 })
 
-breads.get('/', (req, res) => {
-    Bread.find()
-        .then(foundBreads => {
+breads.get('/', async (req, res) => {
+    const foundBakers = await Baker.find().lean()
+    const foundBreads = await Bread.find().limit(2).lean()
             res.render('index', {
                 breads: foundBreads,
                 bakers: foundBakers,
                 title: 'Index Page'
             })
         })
-})
 
 breads.get('/:id', (req,res) => {
     Bread.findById(req.params.id)
@@ -116,6 +115,12 @@ breads.delete('/:indexArray', (req, res) => {
         res.status(303).redirect('/breads')
     })
 })
+
+Model.find()
+    .populate({
+        path: 'fieldToPopulate',
+        options: { limit: 2 }
+    })
   
 
 module.exports = breads
