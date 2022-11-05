@@ -116,11 +116,5 @@ breads.delete('/:indexArray', (req, res) => {
     })
 })
 
-Model.find()
-    .populate({
-        path: 'fieldToPopulate',
-        options: { limit: 2 }
-    })
-  
 
 module.exports = breads
